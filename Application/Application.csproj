@@ -89,19 +89,141 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\themify-icons.css" />
+    <Content Include="Content\datepicker\bootstrap-datepicker.min.css" />
+    <Content Include="Content\datepicker\bootstrap-datepicker.min.js" />
+    <Content Include="Content\datepicker\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\editor\summernote.css" />
+    <Content Include="Content\editor\summernote.js" />
+    <Content Include="Content\editor\summernote.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\themify.svg" />
+    <Content Include="Content\img\blog-img\b1.jpg" />
+    <Content Include="Content\img\blog-img\b10.jpg" />
+    <Content Include="Content\img\blog-img\b11.jpg" />
+    <Content Include="Content\img\blog-img\b12.jpg" />
+    <Content Include="Content\img\blog-img\b13.jpg" />
+    <Content Include="Content\img\blog-img\b14.jpg" />
+    <Content Include="Content\img\blog-img\b15.jpg" />
+    <Content Include="Content\img\blog-img\b16.jpg" />
+    <Content Include="Content\img\blog-img\b17.jpg" />
+    <Content Include="Content\img\blog-img\b18.jpg" />
+    <Content Include="Content\img\blog-img\b19.jpg" />
+    <Content Include="Content\img\blog-img\b2.jpg" />
+    <Content Include="Content\img\blog-img\b20.jpg" />
+    <Content Include="Content\img\blog-img\b21.jpg" />
+    <Content Include="Content\img\blog-img\b22.jpg" />
+    <Content Include="Content\img\blog-img\b23.jpg" />
+    <Content Include="Content\img\blog-img\b24.jpg" />
+    <Content Include="Content\img\blog-img\b3.jpg" />
+    <Content Include="Content\img\blog-img\b4.jpg" />
+    <Content Include="Content\img\blog-img\b5.jpg" />
+    <Content Include="Content\img\blog-img\b6.jpg" />
+    <Content Include="Content\img\blog-img\b7.jpg" />
+    <Content Include="Content\img\blog-img\b8.jpg" />
+    <Content Include="Content\img\blog-img\bg1.jpg" />
+    <Content Include="Content\img\blog-img\bg2.jpg" />
+    <Content Include="Content\img\blog-img\bg3.jpg" />
+    <Content Include="Content\img\blog-img\bg4.jpg" />
+    <Content Include="Content\img\core-img\favicon.ico" />
+    <Content Include="Content\img\core-img\logo.png" />
+    <Content Include="Content\js\active.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-datatable.js" />
+    <Content Include="Content\js\jquery\jquery-2.2.4.min.js" />
+    <Content Include="Content\js\map-active.js" />
+    <Content Include="Content\js\plugins.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\metro\css\metro-all.css" />
+    <Content Include="Content\metro\css\metro-all.min.css" />
+    <Content Include="Content\metro\css\metro-colors.css" />
+    <Content Include="Content\metro\css\metro-colors.min.css" />
+    <Content Include="Content\metro\css\metro-icons.css" />
+    <Content Include="Content\metro\css\metro-icons.min.css" />
+    <Content Include="Content\metro\css\metro-icons2.css" />
+    <Content Include="Content\metro\css\metro-responsive.css" />
+    <Content Include="Content\metro\css\metro-rtl.css" />
+    <Content Include="Content\metro\css\metro-rtl.min.css" />
+    <Content Include="Content\metro\css\metro.css" />
+    <Content Include="Content\metro\css\metro.min.css" />
+    <Content Include="Content\metro\css\metro2.css" />
+    <Content Include="Content\metro\css\schemes\darcula.css" />
+    <Content Include="Content\metro\css\schemes\darcula.min.css" />
+    <Content Include="Content\metro\css\schemes\red-alert.css" />
+    <Content Include="Content\metro\css\schemes\red-alert.min.css" />
+    <Content Include="Content\metro\css\schemes\red-dark.css" />
+    <Content Include="Content\metro\css\schemes\red-dark.min.css" />
+    <Content Include="Content\metro\css\schemes\red-mirohost.css" />
+    <Content Include="Content\metro\css\schemes\red-mirohost.min.css" />
+    <Content Include="Content\metro\css\schemes\sky-net.css" />
+    <Content Include="Content\metro\css\schemes\sky-net.min.css" />
+    <Content Include="Content\metro\css\third-party\datatables.css" />
+    <Content Include="Content\metro\css\third-party\datatables.min.css" />
+    <Content Include="Content\metro\css\third-party\select2.css" />
+    <Content Include="Content\metro\css\third-party\select2.min.css" />
+    <Content Include="Content\metro\fonts\metro.svg" />
+    <Content Include="Content\metro\js\metro.js" />
+    <Content Include="Content\metro\js\metro.min.js" />
+    <Content Include="Content\metro\js\metro2.js" />
+    <Content Include="Content\select2\select2.full.min.js" />
+    <Content Include="Content\select2\select2.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\JobController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Models\JobDao.cs" />
+    <Compile Include="Areas\Admin\Models\JobViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\NewsDao.cs" />
+    <Compile Include="Areas\Admin\Models\NewsViewModel.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\themify.eot" />
+    <Content Include="Content\fonts\themify.ttf" />
+    <Content Include="Content\fonts\themify.woff" />
+    <Content Include="Content\scss\style.scss" />
+    <Content Include="Content\scss\_mixin.scss" />
+    <Content Include="Content\scss\_responsive.scss" />
+    <Content Include="Content\scss\_theme_color.scss" />
+    <Content Include="Content\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Dashboard\Job.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Content\metro\js\metro.min.js.map" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Content\metro\fonts\metro.json" />
+    <Content Include="Content\metro\fonts\metro.ttf" />
+    <Content Include="Content\metro\fonts\metro.woff" />
+    <Content Include="Areas\Admin\Views\Job\Create.cshtml" />
+    <Content Include="Content\editor\font\summernote.eot" />
+    <Content Include="Content\editor\font\summernote.ttf" />
+    <Content Include="Content\editor\font\summernote.woff" />
+    <Content Include="Areas\Admin\Views\News\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,8 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
