@@ -11,6 +11,7 @@ namespace Application.Areas.Admin.Models
     {
         public static bool Add(NewsViewModel model)
         {
+            var tags = String.Join(",", model.TagName);
             using (var cn = new SqlConnection(Common.CnStr))
             {
                 using (var cmd = cn.CreateCommand())
@@ -19,9 +20,9 @@ namespace Application.Areas.Admin.Models
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Title", model.Title);
                     cmd.Parameters.AddWithValue("@Description", model.Description);
-                    cmd.Parameters.AddWithValue("@TagId", 1);
                     cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
                     cmd.Parameters.AddWithValue("@CreatedBy", 1);
+                    cmd.Parameters.AddWithValue("@Name", tags);
                     cmd.Parameters.AddWithValue("@flag", "Insert");
                     cn.Open();
                     cmd.ExecuteNonQuery();
@@ -50,9 +51,8 @@ namespace Application.Areas.Admin.Models
                             Id = re.GetInt32(0),
                             Title = re.GetString(1),
                             Description = re.GetString(2),
-                            TagId = re.GetInt32(3),
-                            CreatedDate = re.GetDateTime(4),
-                            CreatedBy = re.GetInt32(5)
+                            CreatedDate = re.GetDateTime(3),
+                            CreatedBy = re.GetInt32(4)
                         });
                     }
                     cn.Close();

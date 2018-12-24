@@ -12,8 +12,9 @@ namespace Application.Areas.Admin.Models
         public string Title { get; set; }
         [AllowHtml]
         public string Description { get; set; }
-        public int TagId { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }
+
+        public string[] TagName { get; set; }
     }
 }

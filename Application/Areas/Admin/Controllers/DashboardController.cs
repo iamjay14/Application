@@ -14,10 +14,6 @@ namespace Application.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Job()
-        {
-            return View();
-        }
+        
     }
 }

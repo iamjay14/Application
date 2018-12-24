@@ -12,22 +12,16 @@ namespace Application.Areas.Admin.Controllers
         // GET: Admin/Job
         public ActionResult Index()
         {
-            return View();
+            return View(JobDao.Gets());
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
         public ActionResult Create(JobViewModel model)
         {
             if (JobDao.Add(model))
             {
-                return View();
+                return RedirectToAction("Index");
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
     }

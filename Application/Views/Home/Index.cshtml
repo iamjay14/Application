@@ -1,4 +1,5 @@
 ﻿@using Application.Models
+@using Application.Areas.Admin.Models
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,80 +178,31 @@
                                         </div>
                                         -->
                                         @{
-                                            var data = QuestionDao.Gets();
+                                            var data =JobDao.Gets();
                                         }
                                         <div class="col-12">
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b10.jpg" alt="">
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-                                                    <a href="#" class="headline">
-                                                        <h5>@data.First().Name</h5>
-                                                    </a>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.3s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b11.jpg" alt="">
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-                                                    <a href="#" class="headline">
-                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                    </a>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                            @foreach (var a in data)
+                                            {
+                                                <!-- Single Blog Post -->
+                                                <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                                                    <!-- Post Thumbnail -->
+                                                    <div class="post-thumbnail">
+                                                        <img src="~/Content/img/blog-img/b10.jpg" alt="">
+                                                    </div>
+                                                    <!-- Post Content -->
+                                                    <div class="post-content">
+                                                        <a href="/JobAlert/JobDetail/@a.Id" class="headline">
+                                                            <h5>@a.Title</h5>
+                                                        </a>
+                                                        <!-- Post Meta -->
+                                                        <div class="post-meta">
+                                                            <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.4s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b12.jpg" alt="">
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-                                                    <a href="#" class="headline">
-                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                    </a>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.5s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b13.jpg" alt="">
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-                                                    <a href="#" class="headline">
-                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                    </a>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            }
+                                            
                                         </div>
                                     </div>
                                 </div>

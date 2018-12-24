@@ -12,22 +12,18 @@ namespace Application.Areas.Admin.Controllers
         // GET: Admin/News
         public ActionResult Index()
         {
-            return View();
+            return View(NewsDao.Gets());
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
+        
         [HttpPost]
         public ActionResult Create(NewsViewModel model)
         {
             if (NewsDao.Add(model))
             {
-                return View();
+                return RedirectToAction("Index");
             }
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
