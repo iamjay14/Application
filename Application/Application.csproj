@@ -231,10 +231,19 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuizeController.cs" />
     <Compile Include="Areas\Admin\Models\JobDao.cs" />
     <Compile Include="Areas\Admin\Models\JobViewModel.cs" />
     <Compile Include="Areas\Admin\Models\NewsDao.cs" />
     <Compile Include="Areas\Admin\Models\NewsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuestionChoiceDao.cs" />
+    <Compile Include="Areas\Admin\Models\QuestionChoiceViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuestionDao.cs" />
+    <Compile Include="Areas\Admin\Models\QuestionViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuizeCategoryDao.cs" />
+    <Compile Include="Areas\Admin\Models\QuizeCategoryViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuizeTypeDao.cs" />
+    <Compile Include="Areas\Admin\Models\QuizeTypeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TagDao.cs" />
     <Compile Include="Areas\Admin\Models\TagsDao.cs" />
     <Compile Include="Areas\Admin\Models\TagsViewModel.cs" />
@@ -246,7 +255,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Common.cs" />
-    <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +335,7 @@
     <Content Include="Content\wizard\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="Content\wizard\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="Content\wizard\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Areas\Admin\Views\Quize\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
