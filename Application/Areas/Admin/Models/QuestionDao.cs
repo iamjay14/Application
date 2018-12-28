@@ -38,7 +38,7 @@ namespace Application.Areas.Admin.Models
         public static List<QuestionViewModel> Gets()
         {
             var list = new List<QuestionViewModel>();
-            using (var cn = new SqlConnection())
+            using (var cn = new SqlConnection(Common.CnStr))
             {
                 using (var cmd = cn.CreateCommand())
                 {
@@ -66,7 +66,7 @@ namespace Application.Areas.Admin.Models
         public static QuestionViewModel Get(int id)
         {
             var obj = new QuestionViewModel();
-            using (var cn = new SqlConnection())
+            using (var cn = new SqlConnection(Common.CnStr))
             {
                 using (var cmd = cn.CreateCommand())
                 {

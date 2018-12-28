@@ -234,6 +234,7 @@
     <Compile Include="Areas\Admin\Controllers\QuizeController.cs" />
     <Compile Include="Areas\Admin\Models\JobDao.cs" />
     <Compile Include="Areas\Admin\Models\JobViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\MyAuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin\Models\NewsDao.cs" />
     <Compile Include="Areas\Admin\Models\NewsViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuestionChoiceDao.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="Areas\Admin\Models\QuizeCategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuizeTypeDao.cs" />
     <Compile Include="Areas\Admin\Models\QuizeTypeViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\SessionWrapper.cs" />
     <Compile Include="Areas\Admin\Models\TagDao.cs" />
     <Compile Include="Areas\Admin\Models\TagsDao.cs" />
     <Compile Include="Areas\Admin\Models\TagsViewModel.cs" />
@@ -336,6 +338,8 @@
     <Content Include="Content\wizard\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="Content\wizard\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
     <Content Include="Areas\Admin\Views\Quize\Index.cshtml" />
+    <Content Include="Views\Home\ViewAllJobs.cshtml" />
+    <Content Include="Views\Home\NewsDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

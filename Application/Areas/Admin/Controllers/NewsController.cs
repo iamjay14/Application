@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Application.Areas.Admin.Controllers
 {
+    [MyAuthorize(Roles = "Admin")]
     public class NewsController : Controller
     {
         // GET: Admin/News

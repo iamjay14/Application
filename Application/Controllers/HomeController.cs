@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Areas.Admin.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,18 @@ namespace Application.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ViewAllJobs()
+        {
+            return View(JobDao.Gets());
+        }
+
+        [HttpGet]
+        public ActionResult NewsDetail(int id)
+        {
+            return View(NewsDao.Get(id));
         }
     }
 }

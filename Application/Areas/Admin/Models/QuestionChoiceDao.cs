@@ -32,7 +32,7 @@ namespace Application.Areas.Admin.Models
         public static List<QuestionChoiceViewModel> Gets()
         {
             var list = new List<QuestionChoiceViewModel>();
-            using (var cn = new SqlConnection())
+            using (var cn = new SqlConnection(Common.CnStr))
             {
                 using (var cmd = cn.CreateCommand())
                 {
@@ -60,7 +60,7 @@ namespace Application.Areas.Admin.Models
         public static QuestionChoiceViewModel Get(int id)
         {
             var obj = new QuestionChoiceViewModel();
-            using (var cn = new SqlConnection())
+            using (var cn = new SqlConnection(Common.CnStr))
             {
                 using (var cmd = cn.CreateCommand())
                 {
@@ -87,3 +87,4 @@ namespace Application.Areas.Admin.Models
         }
     }
 }
+

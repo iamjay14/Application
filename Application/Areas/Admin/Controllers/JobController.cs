@@ -7,8 +7,10 @@ using System.Web.Mvc;
 
 namespace Application.Areas.Admin.Controllers
 {
+    [MyAuthorize(Roles = "Admin")]
     public class JobController : Controller
     {
+        
         // GET: Admin/Job
         public ActionResult Index()
         {

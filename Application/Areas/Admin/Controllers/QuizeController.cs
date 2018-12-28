@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Application.Areas.Admin.Controllers
 {
+    
     public class QuizeController : Controller
     {
         // GET: Admin/Quize

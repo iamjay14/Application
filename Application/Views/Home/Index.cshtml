@@ -184,6 +184,7 @@
 
                                             @foreach (var a in data)
                                             {
+
                                                 <!-- Single Blog Post -->
                                                 <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
                                                     <!-- Post Thumbnail -->
@@ -2374,88 +2375,35 @@
 
                                 <div class="tab-pane fade show active" id="world-tab-10" role="tabpanel" aria-labelledby="tab10">
                                     <div class="row">
+                                        @{
+                                            var quizes = QuizeTypeDao.Gets().Take(8);
+                                        }
+                                        @foreach (var a in quizes.Take(4))
+                                        {
+                                            <div class="col-12 col-md-3">
 
-                                        <div class="col-12 col-md-3">
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b2.jpg" alt="">
-                                                    <!-- Catagory -->
-                                                    <div class="post-cta"><a href="#">travel</a></div>
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-                                                    <p>Quize 1</p>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                <!-- Single Blog Post -->
+                                                <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
+                                                    <!-- Post Thumbnail -->
+                                                    <div class="post-thumbnail">
+                                                        <img src="~/Content/img/blog-img/b2.jpg" alt="">
+                                                        <!-- Catagory -->
+                                                        <div class="post-cta"><a href="#">travel</a></div>
+                                                    </div>
+                                                    <!-- Post Content -->
+                                                    <div class="post-content">
+                                                        <p>@a.Name</p>
+                                                        <!-- Post Meta -->
+                                                        <div class="post-meta">
+                                                            <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        }
+                                         
 
-                                        <div class="col-12 col-md-3">
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.3s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b3.jpg" alt="">
-                                                    <!-- Catagory -->
-                                                    <div class="post-cta"><a href="#">travel</a></div>
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-                                                    <p>Quize 2</p>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-md-3">
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b2.jpg" alt="">
-                                                    <!-- Catagory -->
-                                                    <div class="post-cta"><a href="#">travel</a></div>
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-
-                                                    <p>Quize 3</p>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-md-3">
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.3s">
-                                                <!-- Post Thumbnail -->
-                                                <div class="post-thumbnail">
-                                                    <img src="~/Content/img/blog-img/b3.jpg" alt="">
-                                                    <!-- Catagory -->
-                                                    <div class="post-cta"><a href="#">travel</a></div>
-                                                </div>
-                                                <!-- Post Content -->
-                                                <div class="post-content">
-
-                                                    <p>Book 4</p>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
 
 
 
@@ -2465,82 +2413,30 @@
                                                 <!-- ========= Single Catagory Slide ========= -->
                                                 <div class="single-cata-slide">
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6">
-                                                            <!-- Single Blog Post -->
-                                                            <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                                                <!-- Post Thumbnail -->
-                                                                <div class="post-thumbnail">
-                                                                    <img src="~/Content/img/blog-img/b14.jpg" alt="">
-                                                                </div>
-                                                                <!-- Post Content -->
-                                                                <div class="post-content">
-                                                                    <a href="#" class="headline">
-                                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                                    </a>
-                                                                    <!-- Post Meta -->
-                                                                    <div class="post-meta">
-                                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                        @foreach (var a in quizes.Skip(4))
+                                                        {
+                                                            <div class="col-12 col-md-6">
+                                                                <!-- Single Blog Post -->
+                                                                <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
+                                                                    <!-- Post Thumbnail -->
+                                                                    <div class="post-thumbnail">
+                                                                        <img src="~/Content/img/blog-img/b14.jpg" alt="">
+                                                                    </div>
+                                                                    <!-- Post Content -->
+                                                                    <div class="post-content">
+                                                                        <a href="#" class="headline">
+                                                                            <h5>@a.Name</h5>
+                                                                        </a>
+                                                                        <!-- Post Meta -->
+                                                                        <div class="post-meta">
+                                                                            <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6">
-                                                            <!-- Single Blog Post -->
-                                                            <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                                                <!-- Post Thumbnail -->
-                                                                <div class="post-thumbnail">
-                                                                    <img src="~/Content/img/blog-img/b15.jpg" alt="">
-                                                                </div>
-                                                                <!-- Post Content -->
-                                                                <div class="post-content">
-                                                                    <a href="#" class="headline">
-                                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                                    </a>
-                                                                    <!-- Post Meta -->
-                                                                    <div class="post-meta">
-                                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6">
-                                                            <!-- Single Blog Post -->
-                                                            <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                                                <!-- Post Thumbnail -->
-                                                                <div class="post-thumbnail">
-                                                                    <img src="~/Content/img/blog-img/b16.jpg" alt="">
-                                                                </div>
-                                                                <!-- Post Content -->
-                                                                <div class="post-content">
-                                                                    <a href="#" class="headline">
-                                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                                    </a>
-                                                                    <!-- Post Meta -->
-                                                                    <div class="post-meta">
-                                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6">
-                                                            <!-- Single Blog Post -->
-                                                            <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                                                <!-- Post Thumbnail -->
-                                                                <div class="post-thumbnail">
-                                                                    <img src="~/Content/img/blog-img/b17.jpg" alt="">
-                                                                </div>
-                                                                <!-- Post Content -->
-                                                                <div class="post-content">
-                                                                    <a href="#" class="headline">
-                                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                                    </a>
-                                                                    <!-- Post Meta -->
-                                                                    <div class="post-meta">
-                                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
+                                                        }
+                                                        
                                                     </div>
                                                 </div>
                                                 <!-- ========= Single Catagory Slide ========= -->
@@ -3696,136 +3592,28 @@
                         <!-- Widget Area -->
                         <div class="sidebar-widget-area">
                             <h5 class="title">Top Stories</h5>
-                            <div class="widget-content">
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b11.jpg" alt="">
+                            <div class="widget-content">     
+                                @{ 
+                                    var news = NewsDao.Gets();
+                                }
+                                @foreach (var a in news)
+                                {
+                                    <!-- Single Blog Post -->
+                                    <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
+                                        <!-- Post Thumbnail -->
+                                        <div class="post-thumbnail">
+                                            <img src="~/Content/img/blog-img/b11.jpg" alt="">
+                                        </div>
+                                        <!-- Post Content -->
+                                        <div class="post-content">
+                                            <a href="/Home/NewsDetail/@a.Id" class="headline">
+                                                <h5 class="mb-0">@a.Title</h5>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b13.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b14.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b10.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b12.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b11.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b13.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b14.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b10.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b12.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="headline">
-                                            <h5 class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                        </a>
-                                    </div>
-                                </div>
+
+                                }
+                                
                             </div>
                         </div>
                         <!-- Widget Area -->
