@@ -252,11 +252,14 @@
     <Compile Include="Areas\Admin\Models\TagViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobAlertController.cs" />
-    <Compile Include="Controllers\QuizeController.cs" />
+    <Compile Include="Controllers\QuizeInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\CookieWrapper.cs" />
+    <Compile Include="Models\UserInfoDao.cs" />
+    <Compile Include="Models\UserInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -326,8 +329,8 @@
     <Content Include="Content\datatables\datatable.bootstrap.css" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Views\JobAlert\JobDetail.cshtml" />
-    <Content Include="Views\Quize\GetQuize.cshtml" />
-    <Content Include="Views\Quize\Test.cshtml" />
+    <Content Include="Views\QuizeInfo\GetQuize.cshtml" />
+    <Content Include="Views\QuizeInfo\Test.cshtml" />
     <Content Include="Content\wizard\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\wizard\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\wizard\font-awesome-4.7\fonts\fontawesome-webfont.woff" />

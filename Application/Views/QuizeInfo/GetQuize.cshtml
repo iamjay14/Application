@@ -1,0 +1,547 @@
+﻿@using Application.Areas.Admin.Models
+@{
+    ViewBag.Title = "Quize";
+    Layout = "~/_Layouts/_SubLayout.cshtml";
+}
+@model IEnumerable<Application.Areas.Admin.Models.QuestionViewModel>
+<head>
+    <!-- Icons font CSS-->
+    <link href="~/Content/wizard/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/wizard/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="~/Content/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/dashboard/css/ready.min.css" rel="stylesheet" />
+
+    <!-- Vendor CSS-->
+    <!-- Main CSS-->
+    <link href="~/Content/wizard/css/main.min.css" rel="stylesheet" media="all">
+    
+</head>
+<div class="post-content-area mb-50">
+    <!-- Catagory Area -->
+    <div class="world-catagory-area">
+        <ul class="nav navigation-tabs" id="myTab" role="tablist">
+            <li class="title">Title</li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+
+                </a>
+
+            </li>
+        </ul>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 id="outRe"></h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="myTabContent">
+
+            <div class="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
+                <div class="row">
+
+                    <div class="card-1" style="width:100%">
+                        <div class="card-heading">
+                            <h2 class="title">Form Wizard</h2>
+                        </div>
+                        <div class="card-body">
+                            <form class="wizard-container" method="POST" action="#" id="js-wizard-form">
+                                
+                                <div class="progress" id="js-progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                        <span class="progress-val">0%</span>
+                                    </div>
+                                </div>
+                                <ul class="nav nav-tab">
+                                    <li class="active">
+                                        <a href="#tab1" data-toggle="tab">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab2" data-toggle="tab">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab3" data-toggle="tab">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab4" data-toggle="tab">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab5" data-toggle="tab">1</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="questionTab" data-x="@Model.First().QuizeTypeId">
+                                    @{
+                                        var part = Model.Count() / 5;
+                                        var lists = QuestionDao.SplitList(Model.ToList(), part).ToList();
+                                    }
+                                    <div class="tab-pane active" id="tab1">
+                                        
+                                        @foreach (var a in lists[0])
+                                        {
+                                            <div class="row tId" data-x="@a.Id">
+                                                <div class="col-md-12 mb-6">
+                                                    <div>@a.Name</div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(0).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(0).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(1).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(1).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(2).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(2).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(3).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(3).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                        <div class="btn-next-con">
+                                            <a class="btn-next" href="#">Next</a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab2">
+                                        
+                                        @foreach (var a in lists[1])
+                                        {
+                                            <div class="row tId" data-x="@a.Id">
+                                                <div class="col-md-12 mb-6">
+                                                    <div>@a.Name</div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(0).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(0).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(1).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(1).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(2).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(2).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(3).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(3).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                        <div class="btn-next-con">
+                                            <a class="btn-back" href="#">back</a>
+                                            <a class="btn-next" href="#">Next</a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab3">
+                                        
+                                        @foreach (var a in lists[2])
+                                        {
+                                            <div class="row tId" data-x="@a.Id">
+                                                <div class="col-md-12 mb-6">
+                                                    <div>@a.Name</div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(0).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(0).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(1).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(1).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(2).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(2).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(3).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(3).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                        <div class="btn-next-con">
+                                            <a class="btn-back" href="#">back</a>
+                                            <a class="btn-next" href="#">Next</a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="tab-pane" id="tab4">
+                                        
+                                        @foreach (var a in lists[3])
+                                        {
+                                            <div class="row tId" data-x="@a.Id">
+                                                <div class="col-md-12 mb-6">
+                                                    <div>@a.Name</div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(0).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(0).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(1).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(1).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(2).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(2).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(3).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(3).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                        <div class="btn-next-con">
+                                            <a class="btn-back" href="#">back</a>
+                                            <a class="btn-next" href="#">Next</a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab5">
+                                        
+                                        @foreach (var a in lists[4])
+                                        {
+                                            <div class="row tId" data-x="@a.Id">
+                                                <div class="col-md-12 mb-6">
+                                                    <div>@a.Name</div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(0).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(0).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(1).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(1).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(2).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(2).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label class="form-radio-label">
+                                                                            <input class="form-radio-input" type="radio" name=@("opt"+a.Id) value="@a.Choices.ElementAt(3).Id">
+                                                                            <span class="form-radio-sign">@(a.Choices.ElementAt(3).Choice)</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                        <div class="btn-next-con">
+                                            <a class="btn-back" href="#">back</a>
+                                            <a class="btn-last" href="#" id="submitBtn">Submit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+@section Scripts{
+    <!-- Jquery JS-->
+
+<!-- Vendor JS-->
+<script src="~/Content/wizard/jquery-validate/jquery.validate.min.js"></script>
+<script src="~/Content/js/jquery.bootstrap.wizard.min.js"></script>
+
+<!-- Main JS-->
+<script src="~/Content/wizard/js/global.js"></script>
+
+    <script>
+        $("#submitBtn").on('click', function () {
+            $("#questionTab .tId").each(function (e) {
+                //console.log($(this).data("x"));
+            })
+            var data = [];
+            $("#questionTab input[type=radio]:checked").each(function (e) {
+                data.push($(this).val());
+            });
+            $.post("/Home/checkQuestion", { ids: data,qId:$("#questionTab").data("x") }, function (re) {
+                console.log(re);
+                $("#outRe").text("Result "+re["re"]);
+                $("#exampleModalCenter").modal('show');
+            })
+        })
+    </script>
+}

@@ -29,7 +29,6 @@
     <style>
         .login-form {
             width: 25rem;
-            height: 18.75rem;
             position: fixed;
             top: 50%;
             margin-top: -9.375rem;
@@ -59,37 +58,98 @@
 </head>
 <body class="bg-darkTeal">
     <div class="login-form padding20 block-shadow">
-        <form>
-            <h1 class="text-light">Login to service</h1>
-            <hr class="thin" />
-            <br />
-            <div class="input-control text full-size" data-role="input">
-                <label for="user_login">User email:</label>
-                <input type="text" name="user_login" id="user_login">
-                <button class="button helper-button clear"><span class="mif-cross"></span></button>    
-                
-            </div>
-            <br />
-            <br />
-            <div class="input-control password full-size" data-role="input">
-                <label for="user_password">User password:</label>
-                <input type="password" name="user_password" id="user_password">
-                <button class="button helper-button reveal"><span class="mif-looks"></span></button>    
-                
-            </div>
-            <br />
-            <br />
-            <!--
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            <br/>
-            <br/>    
-            -->
-            
-            <div class="form-actions">
-                <button type="submit" class="button primary">Login to...</button>
-                <button type="button" class="button link">Cancel</button>
-            </div>
-        </form>
+        <div style="display:inline" id="loginDiv">
+            <form method="post" action="/Home/Login">
+                <h1 class="text-light">Login</h1>
+                <hr class="thin" />
+                <br />
+                <div class="input-control text full-size" data-role="input">
+                    <label for="user_login">User email:</label>
+                    <input type="text" name="Email" id="email">
+                    <button class="button helper-button clear"><span class="mif-cross"></span></button>
+
+                </div>
+                <br />
+                <br />
+                <div class="input-control password full-size" data-role="input">
+                    <label for="user_password">User password:</label>
+                    <input type="password" name="Password" id="password">
+                    <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+
+                </div>
+                <br />
+                <br />
+                <!--
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <br/>
+        <br/>
+        -->
+
+                <div class="form-actions">
+                    <button type="submit" class="button primary">Login</button>
+                    <button type="button" id="sb" class="button link naviBtn">Create new account</button>
+                </div>
+            </form>
+        </div>
+        <div id="signupDiv" style="display:none">
+            <form method="post" action="/Home/Signup">
+                <h1 class="text-light">Create new account</h1>
+                <hr class="thin" />
+                <br />
+                <div class="input-control text full-size" data-role="input">
+                    <label for="user_login">First Name:</label>
+                    <input type="text" name="FirstName" id="firstName">
+                    <button class="button helper-button clear"><span class="mif-cross"></span></button>
+
+                </div>
+                <br />
+                <br />
+                <div class="input-control password full-size" data-role="input">
+                    <label for="user_password">Last Name:</label>
+                    <input type="text" name="LastName" id="lastName">
+                    <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="input-control text full-size" data-role="input">
+                    <label for="user_login">Mobile:</label>
+                    <input type="text" name="Mobile" id="mobile">
+                    <button class="button helper-button clear"><span class="mif-cross"></span></button>
+
+                </div>
+                <br />
+                <br />
+                <div class="input-control text full-size" data-role="input">
+                    <label for="user_login">Email:</label>
+                    <input type="text" name="Email" id="email">
+                    <button class="button helper-button clear"><span class="mif-cross"></span></button>
+
+                </div>
+                <br />
+                <br />
+                <div class="input-control password full-size" data-role="input">
+                    <label for="user_password">Password:</label>
+                    <input type="password" name="Password" id="password">
+                    <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+
+                </div>
+                <br />
+                <br />
+                <!--
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <br/>
+        <br/>
+        -->
+
+                <div class="form-actions">
+                    <button type="submit" class="button primary">Sign up</button>
+                    <button type="button" class="button link naviBtn" id="lb">back to login!</button>
+                </div>
+            </form>
+        </div>
+        
     </div>
     <script>
         function onSignIn(googleUser) {
@@ -99,6 +159,16 @@
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
         }
+
+        $(".naviBtn").on('click', function () {
+            if ($(this).attr("id") == "lb") {
+                $("#signupDiv").attr("style", "display:none");
+                $("#loginDiv").attr("style", "display:inline");
+            } else if ($(this).attr("id") == "sb") {
+                $("#loginDiv").attr("style", "display:none");
+                $("#signupDiv").attr("style", "display:inline");
+            }
+        })
     </script>
 </body>
 </html>

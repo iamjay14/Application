@@ -45,7 +45,7 @@
                                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@CookieWrapper.Name</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="index.html">Home</a>
                                         <a class="dropdown-item" href="catagory.html">Catagory</a>
@@ -53,18 +53,6 @@
                                         <a class="dropdown-item" href="regular-page.html">Regular Page</a>
                                         <a class="dropdown-item" href="contact.html">Contact</a>
                                     </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Gadgets</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Lifestyle</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Video</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
                                 </li>
                             </ul>
                             <!-- Search Form  -->
@@ -2380,34 +2368,31 @@
                                         }
                                         @foreach (var a in quizes.Take(4))
                                         {
-                                            <div class="col-12 col-md-3">
+                                            <a href="/QuizeInfo/GetQuize/@a.Id">
+                                                <div class="col-12 col-md-3">
 
-                                                <!-- Single Blog Post -->
-                                                <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
-                                                    <!-- Post Thumbnail -->
-                                                    <div class="post-thumbnail">
-                                                        <img src="~/Content/img/blog-img/b2.jpg" alt="">
-                                                        <!-- Catagory -->
-                                                        <div class="post-cta"><a href="#">travel</a></div>
-                                                    </div>
-                                                    <!-- Post Content -->
-                                                    <div class="post-content">
-                                                        <p>@a.Name</p>
-                                                        <!-- Post Meta -->
-                                                        <div class="post-meta">
-                                                            <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                    <!-- Single Blog Post -->
+                                                    <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
+                                                        <!-- Post Thumbnail -->
+                                                        <div class="post-thumbnail">
+                                                            <img src="~/Content/img/blog-img/b2.jpg" alt="">
+                                                            <!-- Catagory -->
+                                                            <div class="post-cta"><a href="#">travel</a></div>
+                                                        </div>
+                                                        <!-- Post Content -->
+                                                        <div class="post-content">
+                                                            <p>@a.Name</p>
+                                                            <!-- Post Meta -->
+                                                            <div class="post-meta">
+                                                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
+                                            
                                         }
-                                         
-
                                         
-
-
-
-
                                         <div class="col-12">
                                             <div class="world-catagory-slider2 owl-carousel wow fadeInUpBig" data-wow-delay="0.4s">
                                                 <!-- ========= Single Catagory Slide ========= -->

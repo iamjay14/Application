@@ -91,5 +91,108 @@ namespace Application.Areas.Admin.Models
             }
             return obj;
         }
+
+        public static List<QuestionViewModel> GetsQuize(int id)
+        {
+            var list = new List<QuestionViewModel>();
+            int qid = 0;
+            using (var cn = new SqlConnection(Common.CnStr))
+            {
+                using (var cmd = cn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_QuestionCRUD";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@QuizeTypeId", id);
+                    cmd.Parameters.AddWithValue("@flag", "GetQuestion");
+                    cn.Open();
+                    var re = cmd.ExecuteReader();
+                    if (re.Read())
+                    {
+                        qid = re.GetInt32(2);
+                        var cList = new QuestionViewModel();
+                        cList.QuizeTypeId = re.GetInt32(0);
+                        cList.Id = re.GetInt32(2);
+                        cList.Name = re.GetString(3);
+                        cList.Choices.Add(
+                                    new QuestionChoiceViewModel
+                                    {
+                                        Id = re.GetInt32(4),
+                                        Choice = re.GetString(5),
+                                        IsRight = Convert.ToByte(re["IsRight"].ToString() == "1" ? 1 : 0)
+                                    });
+                        while (re.Read())
+                        {
+                            if (qid == re.GetInt32(2))
+                            {
+                                cList.Choices.Add(
+                                    new QuestionChoiceViewModel
+                                    {
+                                        Id = re.GetInt32(4),
+                                        Choice = re.GetString(5),
+                                        IsRight = Convert.ToByte(re["IsRight"].ToString() == "1" ? 1 : 0)
+                                    });
+                            }
+                            else
+                            {
+                                list.Add(cList);
+                                qid = re.GetInt32(2);
+                                cList = new QuestionViewModel();
+                                cList.QuizeTypeId = re.GetInt32(0);
+                                cList.Id = re.GetInt32(2);
+                                cList.Name = re.GetString(3);
+                                cList.Choices.Add(
+                                    new QuestionChoiceViewModel
+                                    {
+                                        Id = re.GetInt32(4),
+                                        Choice = re.GetString(5),
+                                        IsRight = Convert.ToByte(re["IsRight"].ToString() == "1" ? 1 : 0)
+                                    });
+                            }
+                        }
+                    }
+                    
+                    cn.Close();
+                }
+            }
+            return list;
+        }
+
+        public static List<QuestionChoiceViewModel> GetsQuizeChoiceData(int id)
+        {
+            var list = new List<QuestionChoiceViewModel>();
+            
+            using (var cn = new SqlConnection(Common.CnStr))
+            {
+                using (var cmd = cn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_QuestionCRUD";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@QuizeTypeId", id);
+                    cmd.Parameters.AddWithValue("@flag", "GetQuestion");
+                    cn.Open();
+                    var re = cmd.ExecuteReader();
+                    while (re.Read())
+                    {
+                        list.Add(new QuestionChoiceViewModel
+                        {
+                            QuestionId=re.GetInt32(2),
+                            Id = re.GetInt32(4),
+                            Choice = re.GetString(5),
+                            IsRight = Convert.ToByte(re["IsRight"].ToString()=="1"?1:0)
+                        });
+                    }
+                    cn.Close();
+                }
+            }
+            return list;
+        }
+
+        public static IEnumerable<List<QuestionViewModel>> SplitList(List<QuestionViewModel> list, int size)
+        {
+            for (int i = 0; i < list.Count; i += size)
+            {
+                yield return list.GetRange(i, Math.Min(size, list.Count - i));
+            }
+        }
     }
 }
