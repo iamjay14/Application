@@ -1,4 +1,5 @@
 ﻿using Application.Areas.Admin.Models;
+using Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Application.Controllers
             return View();
         }
 
+        [CookieAuthorize(Roles = "User")]
         public ActionResult GetQuize(int id)
         {
             return View(QuestionDao.GetsQuize(id));

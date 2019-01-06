@@ -257,7 +257,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\CookieAuthorizeAttribute.cs" />
     <Compile Include="Models\CookieWrapper.cs" />
+    <Compile Include="Models\QuizeResultDao.cs" />
+    <Compile Include="Models\QuizeResultViewModel.cs" />
     <Compile Include="Models\UserInfoDao.cs" />
     <Compile Include="Models\UserInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

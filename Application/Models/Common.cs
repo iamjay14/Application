@@ -7,7 +7,7 @@ namespace Application.Models
 {
     public class Common
     {
-        public static readonly string CnStr = @"Data Source=(LocalDb)\MSSQLLocalDb;Initial Catalog=QuizeDb;Integrated Security=True;Pooling=False";
+        public static readonly string CnStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\War10ck\Documents\QuizeDb.mdf;Integrated Security=True;Connect Timeout=30";
         
     }
 }

@@ -15,6 +15,7 @@ namespace Application.Areas.Admin.Models
         public int QuizeTypeName { get; set; }
 
         public List<QuestionChoiceViewModel> Choices { get; set; }
+        
 
         public QuestionViewModel()
         {

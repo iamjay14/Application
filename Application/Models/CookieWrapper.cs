@@ -15,7 +15,14 @@ namespace Application.Models
             }
             get
             {
-                return int.Parse(HttpContext.Current.Request.Cookies["User"].Values["UserId"]);
+                if (HttpContext.Current.Request.Cookies["UserId"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Request.Cookies["UserId"].Value);
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -27,7 +34,14 @@ namespace Application.Models
             }
             get
             {
-                return HttpContext.Current.Request.Cookies["User"].Values["Name"];
+                if (HttpContext.Current.Request.Cookies["Name"]!= null)
+                {
+                    return HttpContext.Current.Request.Cookies["Name"].Value;
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
@@ -39,14 +53,21 @@ namespace Application.Models
             }
             get
             {
-                return HttpContext.Current.Request.Cookies["User"].Values["Role"];
+                if (HttpContext.Current.Request.Cookies["Role"] != null)
+                {
+                    return HttpContext.Current.Request.Cookies["Role"].Value;
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
-        public static void CreateCookie(string name,string value)
+        public static void CreateCookie(string key,string value)
         {
-            HttpCookie cookies = new HttpCookie("User");
-            cookies[name] = value;
+            HttpCookie cookies = new HttpCookie(key);
+            cookies.Value = value;
             cookies.Expires = DateTime.Now.AddDays(15);
             HttpContext.Current.Response.SetCookie(cookies);
             HttpContext.Current.Response.Cookies.Add(cookies);

@@ -27,20 +27,11 @@ namespace Application.Controllers
         {
             if (UserInfoDao.Add(model))
             {
-                if (model.Role == "Admin")
-                {
-                    SessionWrapper.UserId = model.Id;
-                    SessionWrapper.Name = model.FirstName + " " + model.LastName;
-                    SessionWrapper.Role = model.Role;
-                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
-                }
-                else if (model.Role == "User")
-                {
-                    CookieWrapper.UserId = model.Id;
-                    CookieWrapper.Name = model.FirstName + " " + model.LastName;
-                    CookieWrapper.Role = model.Role;
-                    return RedirectToAction("Index");
-                }
+                model.Role = "User";
+                CookieWrapper.UserId = model.Id;
+                CookieWrapper.Name = model.FirstName + " " + model.LastName;
+                CookieWrapper.Role = model.Role;
+                return RedirectToAction("Index");
             }
             return RedirectToAction("Login");
         }
@@ -49,20 +40,21 @@ namespace Application.Controllers
         public ActionResult Login(string email,string password)
         {
             var obj = UserInfoDao.IsLogin(email, password);
+            var role = obj.Role;
             if (obj != null)
             {
-                if (obj.Role == "Admin")
+                if (role == "Admin")
                 {
                     SessionWrapper.UserId = obj.Id;
                     SessionWrapper.Name = obj.FirstName + " " + obj.LastName;
-                    SessionWrapper.Role = obj.Role;
+                    SessionWrapper.Role = role;
                     return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                 }
-                else if (obj.Role == "User")
+                else if (role == "User")
                 {
                     CookieWrapper.UserId = obj.Id;
                     CookieWrapper.Name = obj.FirstName + " " + obj.LastName;
-                    CookieWrapper.Role = obj.Role;
+                    CookieWrapper.Role = role.ToString();
                     return RedirectToAction("Index");
                 }
             }
@@ -94,7 +86,11 @@ namespace Application.Controllers
                     count++;
                 }
             }
-            return Json(new { re=count,typeId=qId,data=list });
+            if(QuizeResultDao.Add(new QuizeResultViewModel { QuizeTypeId = qId, UserId = CookieWrapper.UserId, Attempt = 0, Result = count }))
+            {
+                return Json(new { re = count, typeId = qId, data = list, msg="Success" });
+            }
+            return Json(new { re = count, typeId = qId, data = list, msg = "Failed" });
         }
     }
 }
