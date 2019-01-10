@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Application.Areas.Admin.Controllers
 {
-    
+    [MyAuthorize(Roles ="Admin")]
     public class QuizeController : Controller
     {
         // GET: Admin/Quize

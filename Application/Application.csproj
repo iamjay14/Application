@@ -223,17 +223,23 @@
     <Content Include="Content\wizard\mdi-font\css\material-design-iconic-font.min.css" />
     <Content Include="Content\wizard\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MaterialsController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuizeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SyllabusController.cs" />
     <Compile Include="Areas\Admin\Models\JobDao.cs" />
     <Compile Include="Areas\Admin\Models\JobViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\MaterialsDao.cs" />
+    <Compile Include="Areas\Admin\Models\MaterialsViewModel.cs" />
     <Compile Include="Areas\Admin\Models\MyAuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin\Models\NewsDao.cs" />
     <Compile Include="Areas\Admin\Models\NewsViewModel.cs" />
@@ -246,6 +252,8 @@
     <Compile Include="Areas\Admin\Models\QuizeTypeDao.cs" />
     <Compile Include="Areas\Admin\Models\QuizeTypeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\SessionWrapper.cs" />
+    <Compile Include="Areas\Admin\Models\SyllabusDao.cs" />
+    <Compile Include="Areas\Admin\Models\SyllabusViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TagDao.cs" />
     <Compile Include="Areas\Admin\Models\TagsDao.cs" />
     <Compile Include="Areas\Admin\Models\TagsViewModel.cs" />
@@ -346,6 +354,9 @@
     <Content Include="Areas\Admin\Views\Quize\Index.cshtml" />
     <Content Include="Views\Home\ViewAllJobs.cshtml" />
     <Content Include="Views\Home\NewsDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Materials\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Syllabus\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\profile1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

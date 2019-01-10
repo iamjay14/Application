@@ -7,7 +7,7 @@ namespace Application.Models
 {
     public class Common
     {
-        public static readonly string CnStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\War10ck\Documents\QuizeDb.mdf;Integrated Security=True;Connect Timeout=30";
+        public static readonly string CnStr = @"Data Source=SQL6005.site4now.net;Initial Catalog=DB_A4450A_QuizeDb;User Id=DB_A4450A_QuizeDb_admin;Password=War10ck**7;";
         
     }
 }

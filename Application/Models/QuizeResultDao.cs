@@ -40,7 +40,7 @@ namespace Application.Models
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@QuizeTypeId", qid);
                     cmd.Parameters.AddWithValue("@UserId", uid);
-                    cmd.Parameters.AddWithValue("@flag", "Insert");
+                    cmd.Parameters.AddWithValue("@flag", "GetsByUser");
                     cn.Open();
                     var re=cmd.ExecuteReader();
                     while (re.Read())

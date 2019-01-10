@@ -22,24 +22,58 @@
 <div class="post-content-area mb-50">
     <!-- Catagory Area -->
     <div class="world-catagory-area">
-        <ul class="nav navigation-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/index" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-2x fa-arrow-circle-left"></i>
-                </a>
 
-            </li>
-            <li class="title"><h2>Name</h2></li>
+        <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
+                <div class="row">
+
+                    <div class="card-1" style="width:100%">
+                        <div class="card-heading">
+                            <h2 class="title"> </h2>
+                        </div>
+                        <div class="card-body">
+
+                            <ul class="nav navigation-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Home/index" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-2x fa-arrow-circle-left"></i>
+                                    </a>
+
+                                </li>
+                                <li class="title"><h2>Name</h2></li>
 
 
-            <li class="nav-item">
-                <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        
+                                    </a>
 
-                </a>
+                                </li>
+                            </ul>
+                            <div id="detailDiv" style="margin-left:55px">
+                                <h4>Attempts: </h4>
+                                <h5>First: @ViewBag.one,Second: @ViewBag.two,Thirds: @ViewBag.three</h5>
+                                <h5>
+                                    @if (ViewBag.flag == true)
+                                    {
+                                        <a class="nav-link" href="#" id="startQuize" role="button" aria-haspopup="true" aria-expanded="false">
+                                            Start Quize
+                                        </a>
+                                    }
+                                    <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Go to solution!
+                                    </a>
+                                </h5>
+                            </div>
 
-            </li>
-        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -61,18 +95,18 @@
             </div>
         </div>
 
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content" id="myTabContent" style="display:none">
 
             <div class="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
                 <div class="row">
 
                     <div class="card-1" style="width:100%">
                         <div class="card-heading">
-                            <h2 class="title">Form Wizard</h2>
+                            <h2 class="title"> </h2>
                         </div>
                         <div class="card-body">
                             <form class="wizard-container" method="POST" action="#" id="js-wizard-form">
-                                
+
                                 <div class="progress" id="js-progress">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                                         <span class="progress-val">0%</span>
@@ -101,13 +135,13 @@
                                         var lists = QuestionDao.SplitList(Model.ToList(), part).ToList();
                                     }
                                     <div class="tab-pane active" id="tab1">
-                                        
+
                                         @foreach (var a in lists[0])
                                         {
                                             <div class="row tId" data-x="@a.Id">
                                                 <div class="col-md-12 mb-6">
                                                     <div>@a.Name</div>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -133,7 +167,7 @@
                                                                             <span class="form-radio-sign">@(a.Choices.ElementAt(1).Choice)</span>
                                                                         </label>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -154,7 +188,7 @@
                                                                             <span class="form-radio-sign">@(a.Choices.ElementAt(2).Choice)</span>
                                                                         </label>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-6">
@@ -165,7 +199,7 @@
                                                                             <span class="form-radio-sign">@(a.Choices.ElementAt(3).Choice)</span>
                                                                         </label>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -181,7 +215,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab2">
-                                        
+
                                         @foreach (var a in lists[1])
                                         {
                                             <div class="row tId" data-x="@a.Id">
@@ -262,7 +296,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab3">
-                                        
+
                                         @foreach (var a in lists[2])
                                         {
                                             <div class="row tId" data-x="@a.Id">
@@ -341,10 +375,10 @@
                                             <a class="btn-back" href="#">back</a>
                                             <a class="btn-next" href="#">Next</a>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="tab-pane" id="tab4">
-                                        
+
                                         @foreach (var a in lists[3])
                                         {
                                             <div class="row tId" data-x="@a.Id">
@@ -425,7 +459,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab5">
-                                        
+
                                         @foreach (var a in lists[4])
                                         {
                                             <div class="row tId" data-x="@a.Id">
@@ -548,6 +582,11 @@
                 $("#outRe").text("Result "+re["re"]);
                 $("#exampleModalCenter").modal('show');
             })
+        })
+
+        $("#startQuize").on('click', function () {
+            $("#myTabContent").removeAttr("style");
+            $("#detailDiv").attr("style", "display:none");
         })
     </script>
 }
