@@ -102,5 +102,82 @@ namespace Application.Areas.Admin.Models
             }
             return obj;
         }
+
+        public static List<JobViewModel> GetsWithTags()
+        {
+            var list = new List<JobViewModel>();
+            int jid = 0;
+            using (var cn = new SqlConnection(Common.CnStr))
+            {
+                using (var cmd = cn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_jobCRUD";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@flag", "GetsWithTags");
+                    cn.Open();
+                    var re = cmd.ExecuteReader();
+
+                    if (re.Read())
+                    {
+                        jid = re.GetInt32(0);
+                        var jList = new JobViewModel();
+                        jList.Id = re.GetInt32(0);
+                        jList.Title = re.GetString(1);
+                        jList.Description = re.GetString(2);
+                        jList.CreatedDate = re.GetDateTime(3);
+                        jList.CreatedBy = re.GetInt32(4);
+                        jList.ApplyStartDate = re.GetDateTime(5);
+                        jList.ApplyEndDate = re.GetDateTime(6);
+                        jList.Fees = re.GetDecimal(7);
+                        jList.ExamDate = re.GetDateTime(8);
+                        jList.Tags.Add(
+                                    new TagViewModel
+                                    {
+                                        Id = re.GetInt32(9),
+                                        Name=re.GetString(10)
+                                    });
+                        while (re.Read())
+                        {
+                            if (jid == re.GetInt32(0))
+                            {
+                                jList.Tags.Add(
+                                    new TagViewModel
+                                    {
+                                        Id = re.GetInt32(9),
+                                        Name = re.GetString(10)
+                                    });
+                            }
+                            else
+                            {
+                                list.Add(jList);
+                                jid = re.GetInt32(0);
+                                jList = new JobViewModel();
+                                jList.Id = re.GetInt32(0);
+                                jList.Title = re.GetString(1);
+                                jList.Description = re.GetString(2);
+                                jList.CreatedDate = re.GetDateTime(3);
+                                jList.CreatedBy = re.GetInt32(4);
+                                jList.ApplyStartDate = re.GetDateTime(5);
+                                jList.ApplyEndDate = re.GetDateTime(6);
+                                jList.Fees = re.GetDecimal(7);
+                                jList.ExamDate = re.GetDateTime(8);
+                                jList.Tags.Add(
+                                            new TagViewModel
+                                            {
+                                                Id = re.GetInt32(9),
+                                                Name = re.GetString(10)
+                                            });
+                                
+                            }
+                        }
+                        list.Add(jList);
+                    }
+
+                    cn.Close();
+                }
+            }
+            return list;
+        }
+
     }
 }

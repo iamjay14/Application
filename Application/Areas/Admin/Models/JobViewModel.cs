@@ -20,5 +20,12 @@ namespace Application.Areas.Admin.Models
         public DateTime ExamDate { get; set; }
 
         public string[] TagName { get; set; }
+
+        public List<TagViewModel> Tags { get; set; }
+
+        public JobViewModel()
+        {
+            Tags = new List<TagViewModel>();
+        }
     }
 }

@@ -60,7 +60,7 @@ namespace Application.Areas.Admin.Models
             return list;
         }
 
-        public static TagViewModel Get()
+        public static TagViewModel Get(int id)
         {
             var obj = new TagViewModel();
             using (var cn = new SqlConnection(Common.CnStr))
@@ -69,6 +69,7 @@ namespace Application.Areas.Admin.Models
                 {
                     cmd.CommandText = "sp_tagCRUD";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
                     cmd.Parameters.AddWithValue("@flag", "Get");
                     cn.Open();
                     var re = cmd.ExecuteReader();

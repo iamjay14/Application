@@ -56,5 +56,79 @@ namespace Application.Areas.Admin.Models
             }
             return list;
         }
+
+        public static List<TagsViewModel> GetsByTag(int tagId)
+        {
+            var list = new List<TagsViewModel>();
+            using (var cn = new SqlConnection(Common.CnStr))
+            {
+                using (var cmd = cn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_tagsCRUD";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TagId", tagId);
+                    cmd.Parameters.AddWithValue("@flag", "GetsJobByTag");
+                    cn.Open();
+                    var re = cmd.ExecuteReader();
+                    while (re.Read())
+                    {
+                        list.Add(new TagsViewModel
+                        {
+                            Name=re.GetString(0),
+                            Id = re.GetInt32(1),
+                            TypeId = re.GetInt32(2),
+                            Type = re.GetString(3),
+                            TagId = re.GetInt32(4)
+                        });
+                    }
+                    cn.Close();
+                }
+
+                using (var cmd = cn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_tagsCRUD";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TagId", tagId);
+                    cmd.Parameters.AddWithValue("@flag", "GetsMaterialByTag");
+                    cn.Open();
+                    var re = cmd.ExecuteReader();
+                    while (re.Read())
+                    {
+                        list.Add(new TagsViewModel
+                        {
+                            Name = re.GetString(0),
+                            Id = re.GetInt32(1),
+                            TypeId = re.GetInt32(2),
+                            Type = re.GetString(3),
+                            TagId = re.GetInt32(4)
+                        });
+                    }
+                    cn.Close();
+                }
+
+                using (var cmd = cn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_tagsCRUD";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TagId", tagId);
+                    cmd.Parameters.AddWithValue("@flag", "GetsQuizeByTag");
+                    cn.Open();
+                    var re = cmd.ExecuteReader();
+                    while (re.Read())
+                    {
+                        list.Add(new TagsViewModel
+                        {
+                            Name = re.GetString(0),
+                            Id = re.GetInt32(1),
+                            TypeId = re.GetInt32(2),
+                            Type = re.GetString(3),
+                            TagId = re.GetInt32(4)
+                        });
+                    }
+                    cn.Close();
+                }
+            }
+            return list;
+        }
     }
 }
