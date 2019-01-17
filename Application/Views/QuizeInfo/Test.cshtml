@@ -19,113 +19,151 @@
     <!-- Vendor CSS-->
     <!-- Main CSS-->
     <link href="~/Content/wizard/css/main.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /*css for pagination*/
+.page {
+  display: none;
+}
+.page-active {
+  display: block;
+}
+/*end css for pagination*/
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  margin: 2rem;
+  background-color: #B0BEC5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Prata', serif;
+}
+.jumbotron {background-image: linear-gradient(-225deg, #B7F8DB 0%, #50A7C2 100%);
+}
+  /*Example of custom colors for pagination*/
+.page-link {
+    color: #000000;
+    background-color: #80DEEA;
+    border: 1px solid #84FFFF;
+}
+.page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #84FFFF;
+    border-color: #dee2e6;
+}
+.page-item.active .page-link {
+    color: #fff;
+    background-color: #00B8D4;
+    border-color: #00ACC1;
+}
+.page-link:hover {
+    color: #0056b3;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+.page-link:focus {
+    box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+.prev .page-link {
+    background-color: #80DEEA;
+}
+.first .page-link {
+    background-color: #80DEEA;
+}
+.next .page-link {
+    background-color: #80DEEA;
+}
+.last .page-link {
+    background-color: #80DEEA;
+}
+  
+
+  
+
+
+
+</style>
 </head>
 <body>
     
-    <div class="card card-1">
-        <div class="card-heading">
-            <h2 class="title">Form Wizard</h2>
+    <div class="container">
+        <div class="jumbotron page" id="page1">
+            <div class="container">
+                <h1 class="display-4">Adding Pagination to your Website</h1><br>
+                <p class="lead">In this article we teach you how to add pagination, an excellent way to navigate large amounts of content, to your website using a jQuery Bootstrap Plugin.</p><br>
+                <p><a class="btn btn-lg btn-success" href="#" role="button">Learn More</a></p>
+            </div>
         </div>
-        <div class="card-body">
-            <form class="wizard-container" method="POST" action="#" id="js-wizard-form">
-                <div class="progress" id="js-progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                        <span class="progress-val">40%</span>
-                    </div>
-                </div>
-                <ul class="nav nav-tab">
-                    <li class="active">
-                        <a href="#tab1" data-toggle="tab">1</a>
-                    </li>
-                    <li>
-                        <a href="#tab2" data-toggle="tab">1</a>
-                    </li>
-                    <li>
-                        <a href="#tab3" data-toggle="tab">1</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab1">
-                        <div class="input-group">
-                            <label class="label">Full name*:</label>
-                            <input class="input--style-1" type="text" name="fullname" placeholder="ex: Taylor Fuller">
-                        </div>
-                        <div class="input-group">
-                            <label class="label">Email*:</label>
-                            <input class="input--style-1" type="email" name="email" placeholder="ex: example@email.com">
-                        </div>
-                        <div class="input-group">
-                            <label class="label">Phone number*:</label>
-                            <input class="input--style-1" type="text" name="phone" placeholder="">
-                        </div>
-                        <div class="btn-next-con">
-                            <a class="btn-next" href="#">Next</a>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="tab2">
-                        <div class="input-group">
-                            <label class="label">Building Number:</label>
-                            <input class="input--style-1" type="text" name="buil-num" placeholder="02">
-                        </div>
-                        <div class="input-group">
-                            <label class="label">Street:</label>
-                            <input class="input--style-1" type="text" name="street" placeholder="ex: Philadelphia Avenue">
-                        </div>
-                        <div class="input-group">
-                            <label class="label">A Town:</label>
-                            <input class="input--style-1" type="text" name="town" placeholder="The Town">
-                        </div>
-                        <div class="input-group">
-                            <label class="label">Zip code:</label>
-                            <input class="input--style-1" type="text" name="code">
-                        </div>
-                        <div class="btn-next-con">
-                            <a class="btn-back" href="#">back</a>
-                            <a class="btn-next" href="#">Next</a>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="tab3">
-                        <div class="input-group">
-                            <label class="label">Card Holder Name:</label>
-                            <input class="input--style-1" type="text" name="cardName" value="Matthew Wood">
-                        </div>
-                        <div class="input-group">
-                            <label class="label">Card Number:</label>
-                            <div class="input-group-icon">
-                                <input class="input--style-1" type="text" name="cardNum" value="4224-3228-6160-5079">
-                                <i class="zmdi zmdi-card input-icon"></i>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label class="label">CVC:</label>
-                            <div class="input-group-icon">
-                                <input class="input--style-1" type="text" name="town" placeholder="The Town">
-                                <i class="zmdi zmdi-card input-icon"></i>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label class="label">Expiration(MM/YYYY):</label>
-                            <input class="input--style-1" type="text" name="exp" placeholder="MM/YYYY">
-                        </div>
-                        <div class="btn-next-con">
-                            <a class="btn-back" href="#">back</a>
-                            <a class="btn-last" href="#">Submit</a>
-                        </div>
-                    </div>
-                </div>
-            </form>
+        <div class="jumbotron page" id="page2">
+            <h1 class="display-4">Not Another Jumbotron</h1>
+            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
         </div>
+        <div class="jumbotron page" id="page3">
+            <h1 class="display-4">Data. Data. Data.</h1>
+            <p>This example is a quick exercise to illustrate how the default responsive navbar works. It's placed within a <code>.container</code> to limit its width and will scroll with the rest of the page's content.</p>
+            <p><a class="btn btn-lg btn-primary" href="../../components/navbar" role="button">View navbar docs &raquo;</a></p>
+        </div>
+        <div class="jumbotron page" id="page4">
+            <h1 style="-webkit-user-select: auto;">Buy Now!</h1>
+            <p class="lead" style="-webkit-user-select: auto;">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+            <p style="-webkit-user-select: auto;"><a class="btn btn-lg btn-success" href="#" role="button" style="-webkit-user-select: auto;">Get started today</a></p>
+        </div>
+        <div class="jumbotron page" id="page5">
+            <h1 class="cover-heading">Cover your page.</h1>
+            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+            <p class="lead"><a href="#" class="btn btn-lg btn-primary">Learn more</a></p>
+        </div>
+
+        <nav aria-label="Page navigation example">
+            <ul id="pagination-demo" class="pagination justify-content-center"></ul>
+        </nav>
     </div>
+
 
     <!-- Jquery JS-->
     <script src="~/Content/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="~/Content/js/pagination.js"></script>
     <!-- Vendor JS-->
     <script src="~/Content/wizard/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/jquery.bootstrap.wizard.min.js"></script>
-
     <!-- Main JS-->
     <script src="~/Content/wizard/js/global.js"></script>
+    <script>
+        $('#pagination-demo').twbsPagination({
+            totalPages: 5,
+            startPage: 1,
+            visiblePages: 5,
+            initiateStartPageClick: true,
+            hideOnlyOnePage: false,
+            href: false,
+            pageVariable: '{{page}}',
+            totalPagesVariable: '{{total_pages}}',
+            page: null,
+            first: 'First',
+            prev: 'Previous',
+            next: 'Next',
+            last: 'Last',
+            loop: false,
+            beforePageClick: null,
+            onPageClick: function (event, page) {
+                $('.page-active').removeClass('page-active');
+                $('#page' + page).addClass('page-active');
+            },
+            paginationClass: 'pagination',
+            nextClass: 'page-item next',
+            prevClass: 'page-item prev',
+            lastClass: 'page-item last',
+            firstClass: 'page-item first',
+            pageClass: 'page-item',
+            activeClass: 'active',
+            disabledClass: 'disabled',
+            anchorClass: 'page-link'
+        });
 
+
+    </script>
 </body>
 </html>

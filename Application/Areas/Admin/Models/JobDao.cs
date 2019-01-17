@@ -103,6 +103,7 @@ namespace Application.Areas.Admin.Models
             return obj;
         }
 
+
         public static List<JobViewModel> GetsWithTags()
         {
             var list = new List<JobViewModel>();
@@ -179,5 +180,13 @@ namespace Application.Areas.Admin.Models
             return list;
         }
 
+
+        public static IEnumerable<List<JobViewModel>> SplitList(List<JobViewModel> list, int size)
+        {
+            for (int i = 0; i < list.Count; i += size)
+            {
+                yield return list.GetRange(i, Math.Min(size, list.Count - i));
+            }
+        }
     }
 }

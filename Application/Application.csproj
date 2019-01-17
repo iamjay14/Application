@@ -192,6 +192,7 @@
     <Content Include="Content\js\jquery.bootstrap.wizard.min.js" />
     <Content Include="Content\js\jquery\jquery-2.2.4.min.js" />
     <Content Include="Content\js\map-active.js" />
+    <Content Include="Content\js\pagination.js" />
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\metro\css\metro-all.css" />
@@ -247,7 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobController.cs" />
@@ -279,7 +279,6 @@
     <Compile Include="Areas\Admin\Models\TagViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobAlertController.cs" />
-    <Compile Include="Controllers\MyApiController.cs" />
     <Compile Include="Controllers\QuizeInfoController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">

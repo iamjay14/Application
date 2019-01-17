@@ -1,4 +1,4 @@
-﻿
+﻿@using Application.Areas.Admin.Models
 @{
     ViewBag.Title = "ViewAllJobs";
     Layout = "~/_Layouts/_SubLayout.cshtml";
@@ -22,27 +22,88 @@
     <div class="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
         <div class="row">
             <div class="col-12">
-                @foreach (var a in Model)
-                {
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="~/Content/img/blog-img/b10.jpg" alt="">
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="/JobAlert/JobDetail/@a.Id" class="headline">
-                                <h5>@a.Title</h5>
-                            </a>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            </div>
-                        </div>
-                    </div>
+                @{ 
+                    var lists = JobDao.SplitList(Model.ToList(), 15);
+                    int c = 1;
                 }
+                @foreach (var item in lists)
+                {
+                    <div id="@("Page" + c)">
+                        @foreach (var a in item)
+                        {
+                            <!-- Single Blog Post -->
+                            <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                                <!-- Post Thumbnail -->
+                                <div class="post-thumbnail">
+                                    <img src="~/Content/img/blog-img/b10.jpg" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="/JobAlert/JobDetail/@a.Id" class="headline">
+                                        <h5>@a.Title</h5>
+                                    </a>
+                                    <!-- Post Meta -->
+                                    <div class="post-meta">
+                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    c++;
+                }
+                <!-- Single Blog Post -->
+                <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                    
+                    <!-- Post Content -->
+                    <div class="post-content">
+
+                        <nav aria-label="Page navigation example">
+                            <ul id="pagination-demo" class="pagination justify-content-center"></ul>
+                        </nav>
+                    </div>
+                </div>
+
+
             </div>
+            
         </div>
     </div>
 </div>
+@section scripts{
+    <script src="~/Content/js/pagination.js"></script>    
+<script>
+        $('#pagination-demo').twbsPagination({
+            totalPages: @lists.Count(),
+            startPage: 1,
+            visiblePages: @lists.Count(),
+            initiateStartPageClick: true,
+            hideOnlyOnePage: false,
+            href: false,
+            pageVariable: '{{page}}',
+            totalPagesVariable: '{{total_pages}}',
+            page: null,
+            first: 'First',
+            prev: 'Previous',
+            next: 'Next',
+            last: 'Last',
+            loop: false,
+            beforePageClick: null,
+            onPageClick: function (event, page) {
+                $('.page-active').removeClass('page-active');
+                $('#page' + page).addClass('page-active');
+            },
+            paginationClass: 'pagination',
+            nextClass: 'page-item next',
+            prevClass: 'page-item prev',
+            lastClass: 'page-item last',
+            firstClass: 'page-item first',
+            pageClass: 'page-item',
+            activeClass: 'active',
+            disabledClass: 'disabled',
+            anchorClass: 'page-link'
+        });
+
+
+</script>
+}
