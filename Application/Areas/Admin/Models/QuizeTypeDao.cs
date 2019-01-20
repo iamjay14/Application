@@ -19,6 +19,7 @@ namespace Application.Areas.Admin.Models
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Name", model.Name);
                     cmd.Parameters.AddWithValue("@CategoryId", model.CategoryId);
+                    cmd.Parameters.AddWithValue("@Tags", model.tags);
                     cmd.Parameters.AddWithValue("@flag", "Insert");
                     cn.Open();
                     cmd.ExecuteNonQuery();

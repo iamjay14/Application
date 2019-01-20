@@ -11,9 +11,10 @@ namespace Application.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(string username)
         {
-            return View();
+            return View(username);
         }
 
         [HttpGet]

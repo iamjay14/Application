@@ -12,7 +12,8 @@
     <meta name="description" content="Metro, a sleek, intuitive, and powerful framework for faster and easier web development for Windows Metro Style.">
     <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development">
     <meta name="author" content="Sergey Pimenov and Metro UI CSS contributors">
-    
+    <meta name="google-signin-client_id" content="245065237167-uqdollohtrsrclnkk71lpiid2s7jh2bc.apps.googleusercontent.com">
+
     <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' />
 
     <title>Login form :: Metro UI CSS - The front-end framework for developing projects on the web in Windows Metro Style</title>
@@ -20,12 +21,10 @@
     <link href="~/Content/metro/css/metro2.css" rel="stylesheet">
     <link href="~/Content/metro/css/metro-icons2.css" rel="stylesheet">
     <link href="~/Content/metro/css/metro-responsive.css" rel="stylesheet" />
-    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="~/Content/js/jquery/jquery-2.2.4.min.js"></script>
     <script src="~/Content/metro/js/metro2.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="822721080057-3p34rd3ak8q7r4cslhc45iovu9giiror.apps.googleusercontent.com">
-
+    
     <style>
         .login-form {
             width: 25rem;
@@ -55,12 +54,80 @@
             });
         });
     </script>
+    <script>
+window.fbAsyncInit = function() {
+    // FB JavaScript SDK configuration and setup
+    FB.init({
+        appId: '651919791889295', // FB App ID
+      cookie     : true,  // enable cookies to allow the server to access the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.8' // use graph api version 2.8
+    });
+
+    // Check whether the user already logged in
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            //display user data
+            getFbUserData();
+        }
+    });
+};
+
+// Load the JavaScript SDK asynchronously
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+// Facebook login with JavaScript SDK
+function fbLogin() {
+    FB.login(function (response) {
+        if (response.authResponse) {
+            // Get and display the user profile data
+            getFbUserData();
+        } else {
+            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+    }, {scope: 'email'});
+}
+
+// Fetch the user profile data from facebook
+function getFbUserData(){
+    FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+    function (response) {
+        document.getElementById('fbLink').setAttribute("onclick","fbLogout()");
+        document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
+        document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+        document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+    });
+}
+
+// Logout from facebook
+function fbLogout() {
+    FB.logout(function() {
+        document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
+        document.getElementById('fbLink').innerHTML = '<img src="fblogin.png"/>';
+        document.getElementById('userData').innerHTML = '';
+        document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
+    });
+}
+    </script>
 </head>
 <body class="bg-darkTeal">
     <div class="login-form padding20 block-shadow">
         <div style="display:inline" id="loginDiv">
             <form method="post" action="/Home/Login">
                 <h1 class="text-light">Login</h1>
+                <hr class="thin" />
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <!--
+                    <button onclick="fbLogin()" id="fbLink">Facebook</button>
+    
+                -->
+                
                 <hr class="thin" />
                 <br />
                 <div class="input-control text full-size" data-role="input">
@@ -79,11 +146,7 @@
                 </div>
                 <br />
                 <br />
-                <!--
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <br/>
-        <br/>
-        -->
+                
 
                 <div class="form-actions">
                     <button type="submit" class="button primary">Login</button>
@@ -158,8 +221,20 @@
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            window.location = '/Home/Index/username=' + profile.getName();
         }
+        function getFbUserData() {
+            FB.api('/me', { locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture' },
+            function (response) {
+                document.getElementById('fbLink').setAttribute("onclick", "fbLogout()");
+                document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
+                document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+                document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> ' + response.id + '</p><p><b>Name:</b> ' + response.first_name + ' ' + response.last_name + '</p><p><b>Email:</b> ' + response.email + '</p><p><b>Gender:</b> ' + response.gender + '</p><p><b>Locale:</b> ' + response.locale + '</p><p><b>Picture:</b> <img src="' + response.picture.data.url + '"/></p><p><b>FB Profile:</b> <a target="_blank" href="' + response.link + '">click to view profile</a></p>';
 
+                // Save user data
+                saveUserData(response);
+            });
+        }
         $(".naviBtn").on('click', function () {
             if ($(this).attr("id") == "lb") {
                 $("#signupDiv").attr("style", "display:none");

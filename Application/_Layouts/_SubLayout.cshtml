@@ -10,6 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <!-- Title  -->
+        <meta name="google-signin-client_id" content="245065237167-uqdollohtrsrclnkk71lpiid2s7jh2bc.apps.googleusercontent.com">
+
         <title>Eaxam &amp; Help</title>
 
         <!-- Favicon  -->
@@ -17,6 +19,8 @@
 
         <!-- Style CSS -->
         <link rel="stylesheet" href="~/Content/style.css">
+
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         @RenderSection("head", required: false)
         <style>
             .left-border1 {
@@ -74,6 +78,25 @@
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="index.html">Info</a>
                                             <a class="dropdown-item" href="catagory.html">Logout</a>
+                                            <script>
+                                                function signOut() {
+                                                    gapi.load('auth2', function () {
+                                                        gapi.auth2.init();
+                                                    });
+                                                    var auth2 = gapi.auth2.getAuthInstance();
+                                                    auth2.signOut().then(function () {
+                                                        console.log('User signed out.');
+                                                    });
+                                                }
+
+                                                function onLoad() {
+                                                    gapi.load('auth2', function () {
+                                                        gapi.auth2.init();
+                                                    });
+                                                }
+                                            </script>
+                                            <a href="#" onclick="signOut();">Sign out</a>
+                                            
                                         </div>
                                     </li>
                                     

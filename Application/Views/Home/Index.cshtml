@@ -447,26 +447,22 @@
                     @foreach (var a in quizes.Take(4))
                     {
                         <a href="/QuizeInfo/GetQuize/@a.Id">
-                            <div class="col-12 col-md-3">
 
+                            <div class="col-12 col-md-3">
                                 <!-- Single Blog Post -->
                                 <div class="single-blog-post wow fadeInUpBig @("left-border" + no)" data-wow-delay="0.2s">
-                                    <!-- Post Thumbnail 
-                                    <div class="post-thumbnail">
-                                        <img src="~/Content/img/blog-img/b2.jpg" alt="">
-                                        <!-- Catagory 
-                                        <div class="post-cta"><a href="#">travel</a></div>
-                                    </div>
-                                    <!-- Post Content -->
-                                    <a href="/QuizeInfo/GetQuize/@a.Id"  class="post-content">
+
+                                    <div class="post-content">
                                         <p>@a.Name</p>
                                         <!-- Post Meta -->
                                         <div class="post-meta">
                                             <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                            <a href="/Tags/GetsDetail/@a.CategoryId" class="badge" style="background-color:#70a1d2;color:white !important;">Category</a>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
+
                         </a>
                         if (no == 5) { no = 1; }else { no++; }
                     }
